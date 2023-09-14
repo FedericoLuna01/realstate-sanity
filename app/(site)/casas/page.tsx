@@ -1,10 +1,11 @@
 import { getListings } from "@/sanity/sanity-utils"
 import ListingCard from "@/components/listing-card"
+import { type Listing } from "@/types/types"
 
 export const revalidate = 60
 
 const CasasPage = async () => {
-  const listings = await getListings()
+  const listings: Listing[] = await getListings()
   return (
     <section className="container max-w-6xl px-20 py-20 flex flex-col justify-between">
       <h1 className="text-9xl">Casas</h1>

@@ -1,11 +1,13 @@
-import ListingCard from "@/components/listing-card"
-import { getListings } from "@/sanity/sanity-utils"
 import Link from "next/link"
+
+import { getListings } from "@/sanity/sanity-utils"
+import ListingCard from "@/components/listing-card"
+import { type Listing } from "@/types/types"
 
 export const revalidate = 60
 
 const Listings = async () => {
-  const listings = await getListings()
+  const listings: Listing[] = await getListings()
   const listignsToDisplay = listings.slice(0, 2)
   return (
     <section
