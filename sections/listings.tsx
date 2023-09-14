@@ -1,7 +1,12 @@
 import ListingCard from "@/components/listing-card"
+import { getListings } from "@/sanity/sanity-utils"
 import Link from "next/link"
 
-const Listings = () => {
+export const revalidate = 60
+
+const Listings = async () => {
+  const listings = await getListings()
+  const listignsToDisplay = listings.slice(0, 2)
   return (
     <section
       className="container max-w-6xl p-20 flex space-y-16 flex-col"
@@ -10,18 +15,17 @@ const Listings = () => {
       <div
         className="grid grid-cols-2 gap-10"
       >
-        <ListingCard
-          name='casa en la playa'
-          price='$100000'
-          direction='esto es una direccion 123123'
-          image='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80'
-        />
-        <ListingCard
-          name='est oes un acasa'
-          price='$5345432'
-          direction='direccion galda 123123'
-          image='https://images.unsplash.com/photo-1665061580844-f4bb15772ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
-        />
+        {
+          listignsToDisplay.map((listing) => (
+            <ListingCard
+              key={listing._id}
+              name={listing.name}
+              price={listing.price}
+              direction={listing.direction}
+              image={listing.imageUrl}
+            />
+          ))
+        }
       </div>
       <Link
         href='/casas'

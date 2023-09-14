@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   {
     id: 2,
     label: 'Testimoniales',
-    href: '#'
+    href: '/#testimoniales'
   }
 ]
 

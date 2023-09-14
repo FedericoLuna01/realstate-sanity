@@ -3,6 +3,7 @@ import Image from "next/image"
 const TestimonialCard = () => (
   <div
     className="bg-gray-100 p-10 rounded-xl space-y-4 w-full"
+    id='testimoniales'
   >
     <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum non ratione, fugiat earum ab, officia repellendus dolor hic id nam doloremque iure tempore velit aut atque officiis maxime. Quisquam dolor omnis facere quo quam quis optio possimus maiores consequatur? Nobis.&ldquo;</p>
     <div
